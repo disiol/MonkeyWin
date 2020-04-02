@@ -3,13 +3,19 @@ package com.wildsevensmyluckys.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
+import androidx.databinding.library.baseAdapters.BuildConfig;
+
+import com.facebook.applinks.AppLinkData;
 import com.wildsevensmyluckys.R;
 import com.wildsevensmyluckys.manedger.PreferencesManager;
 import com.wildsevensmyluckys.routers.main.MainActivityRouter;
 import com.wildsevensmyluckys.ui.base.BaseActivity;
 
 import javax.inject.Inject;
+
+import static com.wildsevensmyluckys.constants.Constants.DEPLINK;
 
 
 public class MainActivity extends BaseActivity {
@@ -24,75 +30,74 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-mainActivityRouter.showGameFragment();
         // ATTENTION: This was auto-generated to handle app links.
         Intent appLinkIntent = getIntent();
         String appLinkAction = appLinkIntent.getAction();
 
-//        if (preferencesManager.getMyFirstTime()) {
-//            try {
-//    //            Uri appLinkData2 = appLinkIntent.getData();
-//    //            if (appLinkData2 != null) {
-//    //                String url = appLinkData2.toString();
-//    //                if (BuildConfig.DEBUG) {
-//    //                    Log.d("my Log" + this.getLocalClassName(), "App Link appLinkData: " + url);
-//    //                }
-//    //                String string = convertArrayToStringMethod(url.split(DEPLINK));
-//    //
-//    //                if (BuildConfig.DEBUG) {
-//    //                    Log.d("MyLog" + this.getLocalClassName(), "App Link appLinkData url: " + url);
-//    //
-//    //                    Log.d("MyLog" + this.getLocalClassName(), "App Link appLinkData string: " + string);
-//    //                }
-//    //                String token = URL_FOR_CHECK;
-//    //
-//    //                if (BuildConfig.DEBUG) {
-//    //                    Log.d("MyLog" + this.getLocalClassName(), "App Link appLinkData token: " + token);
-//    //                }
-//    //
-//    //                preferencesManager.setURL(token);
-//    //
-//    //
-//    //            }
-//
-//                AppLinkData.fetchDeferredAppLinkData(this, appLinkData -> {
-//                    AppLinkData appLinkData1 = appLinkData;
-//                    if (appLinkData1 == null || appLinkData1.getTargetUri() == null) {
-//                        Log.e("MyLog", "deeplink = null");
-//                        mainActivityRouter.showLogoFragment();
-//
-//
-//                    } else {
-//
-//                        String url = appLinkData1.getTargetUri().toString();
-//                        if (BuildConfig.DEBUG) {
-//                            Log.d("MyLog", "deeplink = " + url);
-//
-//                            Log.d("my Log" + this.getLocalClassName(), "App Link appLinkData: " + url);
-//                        }
-//                        String string = convertArrayToStringMethod(url.split(DEPLINK));
-//
-//                        if (BuildConfig.DEBUG) {
-//                            Log.d("MyLog" + this.getLocalClassName(), "App Link appLinkData url: " + url);
-//
-//                            Log.d("MyLog" + this.getLocalClassName(), "App Link appLinkData string: " + string);
-//                        }
-//
-//
-//                        preferencesManager.setURL(string);
-//                        mainActivityRouter.showLogoFragment();
-//
-//                    }
-//                });
-//            } catch (Exception e) {
-//                Log.e("my Log" + this.getLocalClassName(), "App Link appLinkData: " + e.toString());
-//
-//                e.printStackTrace();
-//            }
-//        } else if (!preferencesManager.getMyFirstTime()){
-//            mainActivityRouter.showLogoFragment();
-//
-//        }
+        if (preferencesManager.getMyFirstTime()) {
+            try {
+    //            Uri appLinkData2 = appLinkIntent.getData();
+    //            if (appLinkData2 != null) {
+    //                String url = appLinkData2.toString();
+    //                if (BuildConfig.DEBUG) {
+    //                    Log.d("my Log" + this.getLocalClassName(), "App Link appLinkData: " + url);
+    //                }
+    //                String string = convertArrayToStringMethod(url.split(DEPLINK));
+    //
+    //                if (BuildConfig.DEBUG) {
+    //                    Log.d("MyLog" + this.getLocalClassName(), "App Link appLinkData url: " + url);
+    //
+    //                    Log.d("MyLog" + this.getLocalClassName(), "App Link appLinkData string: " + string);
+    //                }
+    //                String token = URL_FOR_CHECK;
+    //
+    //                if (BuildConfig.DEBUG) {
+    //                    Log.d("MyLog" + this.getLocalClassName(), "App Link appLinkData token: " + token);
+    //                }
+    //
+    //                preferencesManager.setURL(token);
+    //
+    //
+    //            }
+
+                AppLinkData.fetchDeferredAppLinkData(this, appLinkData -> {
+                    AppLinkData appLinkData1 = appLinkData;
+                    if (appLinkData1 == null || appLinkData1.getTargetUri() == null) {
+                        Log.e("MyLog", "deeplink = null");
+                        mainActivityRouter.showLogoFragment();
+
+
+                    } else {
+
+                        String url = appLinkData1.getTargetUri().toString();
+                        if (BuildConfig.DEBUG) {
+                            Log.d("MyLog", "deeplink = " + url);
+
+                            Log.d("my Log" + this.getLocalClassName(), "App Link appLinkData: " + url);
+                        }
+                        String string = convertArrayToStringMethod(url.split(DEPLINK));
+
+                        if (BuildConfig.DEBUG) {
+                            Log.d("MyLog" + this.getLocalClassName(), "App Link appLinkData url: " + url);
+
+                            Log.d("MyLog" + this.getLocalClassName(), "App Link appLinkData string: " + string);
+                        }
+
+
+                        preferencesManager.setURL(string);
+                        mainActivityRouter.showLogoFragment();
+
+                    }
+                });
+            } catch (Exception e) {
+                Log.e("my Log" + this.getLocalClassName(), "App Link appLinkData: " + e.toString());
+
+                e.printStackTrace();
+            }
+        } else if (!preferencesManager.getMyFirstTime()){
+            mainActivityRouter.showLogoFragment();
+
+        }
 
 
     }
