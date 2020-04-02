@@ -11,7 +11,7 @@ public interface BaseView {
 
     void hideProgress(ProgressBar progressBar);
 
-    void showMessage(String message);
+    void showMessage(String message, String flag);
 
     void showError(Throwable throwable, MainActivityRouter mainActivityRouter);
 }

@@ -110,7 +110,7 @@ public class WebFragment extends BaseBindingFragment<WebPresenter, FragmentWebBi
     }
 
     @Override
-    public void showMessage(String message) {
+    public void showMessage(String message, String flag) {
 
     }
 

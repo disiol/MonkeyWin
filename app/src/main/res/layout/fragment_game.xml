@@ -27,32 +27,36 @@
             app:layout_constraintTop_toTopOf="@+id/guideline3">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/button1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/black"
                 android:text="black"
+                android:tag="0"
                 android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_blue_dark"
+                android:tag="2"
+                android:text="BLUE" />
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_blue_dark"
-                android:text="BLUE" />
+                android:background="@android:color/holo_green_dark"
+                android:tag="3"
+                android:text="green" />
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_green_dark"
-                android:text="green" />
-
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:background="@android:color/holo_red_dark"
+                android:tag="4"
                 android:text="red" />
 
         </LinearLayout>
