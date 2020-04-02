@@ -40,13 +40,20 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.button1.setOnClickListener(v -> {
+            generateColor(binding.button1.getTag());
+        });
+        binding.button2.setOnClickListener(v -> {
+            generateColor(binding.button2.getTag());
+        });
+        binding.button3.setOnClickListener(v -> {
+            generateColor(binding.button3.getTag());
+        });
+        binding.button4.setOnClickListener(v -> {
+            generateColor(binding.button4.getTag());
+        });
 
-        while (butonCaunter <= 4) {
-            Button button  = getActivity().findViewById(R.id.button + butonCaunter);
-            button.setOnClickListener(v -> {
-                generateColor(binding.button2.getTag());
-            });
-        }
+
         showMessage("Guess color", "start");
     }
 
@@ -65,10 +72,9 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
         int pos = random.nextInt(colors.length);
         // Меняем цвет у кнопки
         binding.colorLinearLayout.setBackgroundColor(colors[pos]);
-
-        if((int)buttonTeg == pos) {
-          showMessage("Yuo win", "newGame");
-        }else{
+        if (buttonTeg.equals(String.valueOf(pos))) {
+            showMessage("Yuo win", "newGame");
+        } else {
             showMessage("Yuo lose", "newGame");
 
         }
@@ -96,8 +102,8 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
                 .setCancelable(false)
                 .setNegativeButton("ОК",
                         (dialog, id) -> {
-                            if(flag.equals("newGame")){
-                              presenter.newGame();
+                            if (flag.equals("newGame")) {
+                                presenter.newGame();
                             }
                             dialog.cancel();
                         });

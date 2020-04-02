@@ -104,7 +104,6 @@ public class StartFragment extends BaseBindingFragment<StartPresenter, StartBind
     @Override
     public void showError(Throwable throwable, MainActivityRouter mainActivityRouter) {
         forRanGame.edit().putBoolean(SHOW_GAME, true).apply();
-
         mainActivityRouter.showGameFragment();
     }
 }
