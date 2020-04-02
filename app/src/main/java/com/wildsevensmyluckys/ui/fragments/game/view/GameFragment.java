@@ -72,7 +72,9 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
         int pos = random.nextInt(colors.length);
         // Меняем цвет у кнопки
         binding.colorLinearLayout.setBackgroundColor(colors[pos]);
-        if (buttonTeg.equals(String.valueOf(pos))) {
+        Log.d(MYLOG_TEG, (String) buttonTeg.toString());
+
+        if (buttonTeg.toString().equals(String.valueOf(pos))) {
             showMessage("Yuo win", "newGame");
         } else {
             showMessage("Yuo lose", "newGame");
