@@ -1,11 +1,14 @@
 package com.wildsevensmyluckys.di.modules;
 
 
+import android.util.Base64;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.wildsevensmyluckys.api.Api;
 import com.wildsevensmyluckys.constants.Constants;
 
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
@@ -47,7 +50,7 @@ public class ApiModule {
     @Singleton
     Api provideRestApi(Gson gson, OkHttpClient client) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.URL_FOR_CHECK)
+                .baseUrl(decodeBase64(Constants.URL_FOR_CHECK))
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -57,6 +60,10 @@ public class ApiModule {
         return retrofit.create(Api.class);
     }
 
-
+    private String decodeBase64(String coded){
+        byte[] valueDecoded= new byte[0];
+        valueDecoded = Base64.decode(coded.getBytes(StandardCharsets.UTF_8), Base64.DEFAULT);
+        return new String(valueDecoded);
+    }
 
 }
