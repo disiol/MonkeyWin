@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">MonkeyWin</string>
+    <string name="app_name">Monkey Win</string>
     <string name="facebook_app_id">253089279065654</string>
-    <string name="gamer_points">Points</string>
 </resources>

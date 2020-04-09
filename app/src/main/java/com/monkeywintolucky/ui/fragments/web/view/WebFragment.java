@@ -45,8 +45,6 @@ public class WebFragment extends BaseBindingFragment<WebPresenter, FragmentWebBi
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        showProgress(binding.progressBar);
-
         countDownTimer = new CountDownTimer(3000, 1) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -55,7 +53,7 @@ public class WebFragment extends BaseBindingFragment<WebPresenter, FragmentWebBi
             @Override
             public void onFinish() {
                 presenter.showSite();
-                hideProgress(binding.progressBar);
+
             }
         }.start();
 
