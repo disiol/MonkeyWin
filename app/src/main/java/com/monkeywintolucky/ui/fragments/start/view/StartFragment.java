@@ -58,10 +58,7 @@ public class StartFragment extends BaseBindingFragment<StartPresenter, StartBind
             Log.d(MYLOG_TEG, "First time");
 
             // first time task
-            showProgress(binding.progressBar);
             presenter.check();
-            showProgress(binding.progressBar);
-
             // record the fact that the app has been started at least once
             preferencesManager.setMyFirstTime(false);
             forRanWeb.edit().putBoolean(SHOW_WEB_FRAGMENT, false).apply();
