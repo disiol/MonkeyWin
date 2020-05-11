@@ -31,6 +31,7 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
 
     private ArrayList<Button> buttons = new ArrayList<>();
     int butonCaunter = 4;
+    private int pos;
 
     @Override
     public int getLayoutResId() {
@@ -42,16 +43,20 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.button1.setOnClickListener(v -> {
-            generateColor(binding.button1.getTag());
+            binding.colorLinearLayout.setVisibility(View.VISIBLE);
+            chekForWin(binding.button1.getTag());
         });
         binding.button2.setOnClickListener(v -> {
-            generateColor(binding.button2.getTag());
+            binding.colorLinearLayout.setVisibility(View.VISIBLE);
+            chekForWin(binding.button2.getTag());
         });
         binding.button3.setOnClickListener(v -> {
-            generateColor(binding.button3.getTag());
+            binding.colorLinearLayout.setVisibility(View.VISIBLE);
+            chekForWin(binding.button3.getTag());
         });
         binding.button4.setOnClickListener(v -> {
-            generateColor(binding.button4.getTag());
+            binding.colorLinearLayout.setVisibility(View.VISIBLE);
+            chekForWin(binding.button4.getTag());
         });
 
         binding.startButton.setOnClickListener( v ->{
@@ -60,6 +65,8 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
             binding.buttonsLinearLayout.setVisibility(View.VISIBLE);
 
             showMessage("Guess color", "start");
+           generateColor();
+
 
         });
 
@@ -73,7 +80,7 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
     }
 
 
-    public void generateColor(Object buttonTeg) {
+    public void generateColor() {
         Random random = new Random();
         // Массив из пяти цветов
         int colors[] = {R.drawable.rounded_button_black,
@@ -81,18 +88,22 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
                         R.drawable.rounded_button_green,
                         R.drawable.rounded_button_red};
 
-        int pos = random.nextInt(colors.length);
+         pos = random.nextInt(colors.length);
         // Меняем цвет у кнопки
-        binding.colorLinearLayout.setBackgroundColor(colors[pos]);
-        Log.d(MYLOG_TEG, (String) buttonTeg.toString());
+        binding.colorLinearLayout.setBackgroundDrawable(getResources().getDrawable(colors[pos]));
 
+
+    }
+
+    private void chekForWin(Object buttonTeg) {
+        Log.d(MYLOG_TEG, (String) buttonTeg.toString());
+        binding.colorLinearLayout.setVisibility(View.VISIBLE);
         if (buttonTeg.toString().equals(String.valueOf(pos))) {
             showMessage("Yuo win", "newGame");
         } else {
             showMessage("Yuo lose", "newGame");
 
         }
-
     }
 
 
