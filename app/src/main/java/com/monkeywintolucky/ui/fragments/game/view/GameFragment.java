@@ -54,8 +54,15 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
             generateColor(binding.button4.getTag());
         });
 
+        binding.startButton.setOnClickListener( v ->{
+            binding.startButton.setVisibility(View.GONE);
+            binding.colorLinearLayout.setVisibility(View.VISIBLE);
+            binding.buttonsLinearLayout.setVisibility(View.VISIBLE);
 
-        showMessage("Guess color", "start");
+            showMessage("Guess color", "start");
+
+        });
+
     }
 
 
