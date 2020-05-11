@@ -6,6 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        style="@style/RoundedCornerButton"
         android:background="@drawable/begraund"
         tools:context=".MainActivity">
 
@@ -27,10 +28,12 @@
             app:layout_constraintTop_toTopOf="@+id/guideline3">
 
             <Button
+                style="@style/RoundedCornerButton"
                 android:id="@+id/button1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/black"
+                android:background="@drawable/rounded_button_black"
+                android:textSize="20pt"
                 android:text="black"
                 android:tag="0"
                 android:textColor="@android:color/white" />
@@ -39,15 +42,17 @@
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_blue_dark"
+                android:background="@drawable/rounded_button_blue"
                 android:tag="1"
+                android:textSize="20pt"
                 android:text="BLUE" />
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_green_dark"
+                android:background="@drawable/rounded_button_green"
+                android:textSize="20pt"
                 android:tag="2"
                 android:text="green" />
 
@@ -55,8 +60,9 @@
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_red_dark"
+                android:background="@drawable/rounded_button_red"
                 android:tag="3"
+                android:textSize="@dimen/text_size"
                 android:text="red" />
 
         </LinearLayout>
@@ -65,7 +71,7 @@
             android:id="@+id/color_LinearLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@android:color/black"
+            android:background="@drawable/rounded_button_black"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintEnd_toEndOf="parent"

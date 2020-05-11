@@ -69,7 +69,11 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
     public void generateColor(Object buttonTeg) {
         Random random = new Random();
         // Массив из пяти цветов
-        int colors[] = {Color.BLACK, Color.BLUE, Color.GREEN, Color.RED};
+        int colors[] = {R.drawable.rounded_button_black,
+                        R.drawable.rounded_button_blue,
+                        R.drawable.rounded_button_green,
+                        R.drawable.rounded_button_red};
+
         int pos = random.nextInt(colors.length);
         // Меняем цвет у кнопки
         binding.colorLinearLayout.setBackgroundColor(colors[pos]);
