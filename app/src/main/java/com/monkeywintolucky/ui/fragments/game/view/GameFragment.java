@@ -65,7 +65,6 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
             binding.buttonsLinearLayout.setVisibility(View.VISIBLE);
 
             showMessage("Guess color", "start");
-           generateColor();
 
 
         });
@@ -97,6 +96,7 @@ public class GameFragment extends BaseBindingFragment<GamePresenter, FragmentGam
 
     private void chekForWin(Object buttonTeg) {
         Log.d(MYLOG_TEG, (String) buttonTeg.toString());
+        generateColor();
         binding.colorLinearLayout.setVisibility(View.VISIBLE);
         if (buttonTeg.toString().equals(String.valueOf(pos))) {
             showMessage("Yuo win", "newGame");
